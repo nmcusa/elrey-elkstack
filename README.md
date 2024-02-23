@@ -53,3 +53,13 @@ echo 'Hello World!' | nc 10.2.0.199 5044
 ```bash
 curl -X GET "10.2.0.199:9200/_search?q=message:\"Hello World!\"&pretty"
 ```
+
+Get logs:
+```bash
+curl -X GET "http://10.2.0.199:9200/logstash-2024.02.23/_search?pretty" -H 'Content-Type: application/json' -d'
+{
+  "query": { "match_all": {} },
+  "sort": [ { "@timestamp": { "order": "desc" } } ],
+  "size": 5
+}' | jq .
+```
