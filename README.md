@@ -44,3 +44,12 @@ Adapt and expand this README.md as necessary to fit the specifics of your enviro
 
 ---
 
+# Test logstash input:
+```bash
+echo 'Hello World!' | nc 10.2.0.199 5044
+```
+
+# Verify Logs in Elasticsearch:
+```bash
+curl -X GET "10.2.0.199:9200/_search?q=message:\"Hello World!\"&pretty"
+```
