@@ -15,6 +15,9 @@ services:
   kibana:
     image: docker.elastic.co/kibana/kibana:7.15.0
     container_name: kibana
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - SERVER_PUBLICBASEURL=http://10.2.0.199:5601
     ports:
       - "5601:5601"
     depends_on:
